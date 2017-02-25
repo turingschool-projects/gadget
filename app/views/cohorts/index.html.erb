@@ -10,14 +10,16 @@
           <div class="row">
             <div class="col s6">
             <center><h5>Select Cohort</h5></center>
+
+
+            <%= form_for(cohorts_verify_path) do  |f|%>
+
               <% @cohorts.each do |cohort| %>
               <div class="col s4">
-                <input type="checkbox" id=<%= cohort.id %> />
-                <label for=<%= cohort.id %>><%= cohort.name %></label>
+                
+                <%= f.check_box "test", {}, true, false %>
               </div>
-
-
-              <% end %>
+             <% end %>
             </div>
             <div class="col s6">
                 <center><h5>Select Critera</h5></center>
@@ -48,9 +50,12 @@
             </div>
           </div>
         <div class="card-action">
-          <a href="#">Submit</a>
+          <input class="verify" type='submit' value='submit'></input>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
+

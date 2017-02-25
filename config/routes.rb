@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   get '/cohorts', to: 'cohorts#index'
+  get '/cohorts/verify', to: 'cohorts#verify'
+
 end
