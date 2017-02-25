@@ -4,6 +4,7 @@ class CohortsController < ApplicationController
   end
 
   def verify 
-    byebug
+    @list = CohortList.cohort_list(current_user.access_token, "1608")
+    
   end
 end

@@ -15,6 +15,16 @@ class CensusService
     parse_json(cohort_response.body)
   end
 
+  def cohort_list(token, cohort)
+    cohort_response = conn.get do |req|
+      req.url "/api/v1/users"
+      req.params[:by_chort] = cohort
+      req.params[:access_token] = token
+    end 
+    parse_json(cohort_response.body)
+  end
+   
+
   def parse_json(json)
     JSON.parse(json, symbolize_names: true)
   end 
