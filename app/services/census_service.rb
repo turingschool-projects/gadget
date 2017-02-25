@@ -17,8 +17,8 @@ class CensusService
 
   def cohort_list(token, cohort)
     cohort_response = conn.get do |req|
-      req.url "/api/v1/users"
-      req.params[:by_chort] = cohort
+      req.url "/api/v1/users/by_cohort"
+      req.params[:cohort_id] = cohort
       req.params[:access_token] = token
     end 
     parse_json(cohort_response.body)

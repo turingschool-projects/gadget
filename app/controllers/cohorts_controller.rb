@@ -4,7 +4,14 @@ class CohortsController < ApplicationController
   end
 
   def verify 
-    @list = CohortList.cohort_list(current_user.access_token, "1608")
-    
+    if(params[:cohorts])
+      cohorts = params[:cohorts]
+      @array = []
+      cohorts.each do |id|
+        @list = CohortList.cohort_list(current_user.access_token, id)
+        @array << @list 
+      end 
+      @array
+    end
   end
 end
