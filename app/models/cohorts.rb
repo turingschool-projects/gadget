@@ -9,7 +9,7 @@ attr_reader :name, :id, :status
 
 
   def self.all_cohorts(token)
-    CensusService.new.cohorts(token).each do |raw_info|
+    CensusService.new.cohorts(token).map do |raw_info|
       Cohorts.new(raw_info)
     end
   end 
