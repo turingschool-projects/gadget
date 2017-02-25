@@ -1,0 +1,16 @@
+class Cohorts 
+
+attr_reader :name, :id, :status
+  def initialize(service_info={})
+    @name   = service_info[:name]
+    @id     = service_info[:id]
+    @status = service_info[:status]
+  end
+
+
+  def self.all_cohorts(token)
+    CensusService.new.cohorts(token).each do |raw_info|
+      Cohorts.new(raw_info)
+    end
+  end 
+end 
