@@ -1,4 +1,18 @@
-<% @results.flatten.each do |person| %>
-  
-  <p><%= person.last_name %><%= person.github %><%= person.linkedin %></p>
-<% end %>
+
+<table class="striped">
+  <thead>
+    <tr> <th>Cohort</th>  <th>Name</th>   <th>Github Accout </th>    <th>Github Name Matches</th>  <th>Github Picture</th>  <th>Linkedn Account</th><tr>
+  <tbody>
+    <% @array.flatten.each do |student| %>
+    <tr>
+      <td> <%= student.cohort %> </td>
+      <td> <%= student.name %> </td>
+      <td> <%= student.github_exists? %> </td>
+      <td> <%= student.github_name_matches? %> </td>
+      <td> <%= student.github_picture_exists? %> </td>
+      <td> <%= student.linkedin_exists? %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+  </thead>
+</table>

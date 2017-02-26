@@ -14,12 +14,11 @@ class CohortsController < ApplicationController
       end
     end
 
-    array = []
+    @array = []
     @results.flatten.each do |student|
-      array << Student.cohort_list(student.github)
+      @array << Student.cohort_list(student.github, student)
     end
-    array
-    require "pry"; binding.pry
+    @array
   end
 
 end

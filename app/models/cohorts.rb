@@ -1,6 +1,6 @@
 class Cohorts
 
-attr_reader :name, :id, :status, :email
+attr_reader :name, :id, :status
   def initialize(service_info={})
     @name   = service_info[:name]
     @id     = service_info[:id]
