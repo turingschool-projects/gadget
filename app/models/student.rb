@@ -8,6 +8,5 @@ class Student
 
   def self.cohort_list(username)
     Student.new(GithubService.github(username))
-
   end
 end
