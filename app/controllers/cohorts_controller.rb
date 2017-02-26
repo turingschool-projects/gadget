@@ -1,17 +1,20 @@
 class CohortsController < ApplicationController
+
   def index
     @cohorts = Cohorts.all_cohorts(current_user.access_token)
   end
 
-  def verify 
+  def verify
     if(params[:cohorts])
       cohorts = params[:cohorts]
-      @array = []
-      cohorts.each do |id|
+
+      @results = cohorts.reduce([]) do |results, id|
         @list = CohortList.cohort_list(current_user.access_token, id)
-        @array << @list 
-      end 
-      @array
+        results << @list
+        results
+      end
     end
-  end
+    @results
+  endq
+
 end

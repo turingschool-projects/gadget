@@ -17,3 +17,13 @@
 .nav-wrapper {
   background-color: #05C2D1;
 }
+
+.cohort-list {
+  display: inline;
+}
+
+.cohort-checkbox {
+  opacity: 100 !important;
+  left: 0 !important;
+  position: relative !important;
+}

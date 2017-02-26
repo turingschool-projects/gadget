@@ -1,7 +1,4 @@
-<% @array.each do |cohort| %>
-
-  <% cohort.each do |person| %>
-    <%= person.first_name %>
-    <%= person.last_name %><%= person.github %><%= person.linkedin %>
-  <% end %>
+<% @results.flatten.each do |person| %>
+  
+  <p><%= person.last_name %><%= person.github %><%= person.linkedin %></p>
 <% end %>

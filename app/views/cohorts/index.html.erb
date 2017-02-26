@@ -10,7 +10,7 @@
           <div class="row">
             <div class="col s6">
             <center><h5>Select Cohort</h5></center>
-            <form>
+            <form action="/cohorts/verify" method="post">
               <% @cohorts.each do |cohort| %>
               <div class="col s4">
 
@@ -56,11 +56,16 @@
   </div>
 </div>
 
+<%= form_tag(cohorts_verify_path, method: "post") do %>
+    <%= select_tag "cohorts", options_from_collection_for_select(@cohorts, "id", "name", "1"), class: "cohort-list", multiple: true %>
+    <%= select_tag "criteria", options_for_select([ "Github Linked", "Github Photo", "Github Name Matches", "LinkedIn Linked", "LinkedIn Photo", "LinkedIn Name Matches"], "MasterCard"), class: "cohort-list", multiple: true %>
+  <%= submit_tag 'Save' %>
+<% end %>
+
 <script type="text/javascript">
- $('.verify').on('click', function(e) {
-  e.preventDefault();
+ $('.verify2').on('click', function(e) {
   var allValues = $('input')
-  var cohorts = []  
+  var cohorts = []
   var criteria = []
 
   for (var i=0; i < allValues.length; i++) {
@@ -69,13 +74,18 @@
     } else if (allValues[i].checked){
       criteria.push(allValues[i].parentElement.children[1].innerText);
     }
-  } 
+  }
   var params = [cohorts, criteria]
   $.ajax({
       url: '/cohorts/verify',
       type: 'get',
       data: {cohorts: cohorts, criteria: criteria }
-    })
+    }).done(function(data){
+      path = data.split("=")[1].replace("'", "").trim();
+      windows.location = path;
+    }).fail(function(e){
+      console.log("test2");
+    });
  })
 
 </script>
