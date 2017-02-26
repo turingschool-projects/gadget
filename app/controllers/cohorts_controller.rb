@@ -5,6 +5,8 @@ class CohortsController < ApplicationController
   end
 
   def verify
+    @criteria = params[:criteria]
+
     if(params[:cohorts])
       cohorts = params[:cohorts]
       @results = cohorts.reduce([]) do |results, id|
@@ -19,6 +21,6 @@ class CohortsController < ApplicationController
       @array << Student.cohort_list(student.github, student)
     end
     @array
-  end
 
+  end
 end

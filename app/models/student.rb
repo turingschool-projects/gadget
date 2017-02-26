@@ -1,7 +1,7 @@
 class Student
   attr_reader :github_name, :github_picture, :github, :linkedin, :name, :cohort
+  
   def initialize(service_info={}, student=nil)
-    require "pry"; binding.pry
     @github_name    = service_info[:name]
     @github_picture = service_info[:avatar_url]
     @github         = student.github
