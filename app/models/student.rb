@@ -1,18 +1,21 @@
 class Student
   attr_reader :github_name, :github_picture, :github, :linkedin, :name, :cohort
-  
-  def initialize(service_info={}, student=nil)
-    @github_name    = service_info[:name]
-    @github_picture = service_info[:avatar_url]
-    @github         = student.github
-    @linkedin       = student.linkedin
-    @name           = "#{student.first_name} #{student.last_name}"
-    @cohort          = student.cohort
+
+  def initialize(service_info={}, student=nil, linkedin={})
+    require "pry"; binding.pry
+    @github_name      = service_info[:name]
+    @github_picture   = service_info[:avatar_url]
+    @github           = student.github
+    @linkedin         = student.linkedin
+    @name             = "#{student.first_name} #{student.last_name}"
+    @cohort           = student.cohort
+    @linkedin_name    = "#{linkedin.first_name} #{linkedin.last_name}"
+    @linkedin_picture = linkedin.picture
   end
 
 
   def self.cohort_list(username, student)
-    Student.new(GithubService.github(username), student)
+    Student.new(GithubService.github(username), student, LinkedinService.scrape(student.linkedin))
   end
 
   def linkedin_exists?
