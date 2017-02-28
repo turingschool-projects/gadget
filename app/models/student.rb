@@ -1,16 +1,15 @@
 class Student
-  attr_reader :github_name, :github_picture, :github, :linkedin, :name, :cohort
+  attr_reader :github_name, :github_picture, :github, :linkedin, :name, :cohort, :linkedin_name, :linkedin_picture
 
   def initialize(service_info={}, student=nil, linkedin={})
-    require "pry"; binding.pry
     @github_name      = service_info[:name]
     @github_picture   = service_info[:avatar_url]
     @github           = student.github
     @linkedin         = student.linkedin
     @name             = "#{student.first_name} #{student.last_name}"
     @cohort           = student.cohort
-    @linkedin_name    = "#{linkedin.first_name} #{linkedin.last_name}"
-    @linkedin_picture = linkedin.picture
+    @linkedin_name    = "#{linkedin.first_name} #{linkedin.last_name}" if linkedin != "" && linkedin != nil
+    @linkedin_picture = linkedin.picture if linkedin != "" && linkedin != nil
   end
 
 
