@@ -7,6 +7,8 @@
       <th class="github-name info">Github Name Matches</th>
       <th class="github-picture info">Github Picture</th>
       <th class="linkedin-account info">Linkedn Account</th>
+      <!-- <th class="linkedin-name info">Linkedn name</th>
+      <th class="linkedin-picture info">Linkedn picture</th> -->
     <tr>
   <tbody>
     <% @array.flatten.each do |student| %>
@@ -17,6 +19,8 @@
       <td class="github-name info"> <%= student.github_name_matches? %> </td>
       <td class="github-picture info"> <%= student.github_picture_exists? %> </td>
       <td class="linkedin-account info"> <%= student.linkedin_exists? %> </td>
+      <!-- <td class="linkedin-name info"> <%#= student.linkedin_name_matches? %> </td> -->
+      <!-- <td class="linkedin-picture info"> <%#= student.linkedin_picture_exists? %> </td> -->
     </tr>
     <% end %>
   </tbody>
@@ -41,12 +45,12 @@
       if(criteria[i] == "LinkedIn Linked"){
         $('.linkedin-account').show();
       }
-      // if(criteria[i] == "LinkedIn Photo"){
-      //   $('.linkedin-picture').show();
-      // }
-      // if(criteria[i] == "LinkedIn Name Matches"){
-      //   $('.linkedin-name').show();
-      // }
+      if(criteria[i] == "LinkedIn Photo"){
+        $('.linkedin-picture').show();
+      }
+      if(criteria[i] == "LinkedIn Name Matches"){
+        $('.linkedin-name').show();
+      }
     }
   })
 </script>

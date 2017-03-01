@@ -21,6 +21,5 @@ class CohortsController < ApplicationController
       @array << Student.cohort_list(student.github, student)
     end
     @array
-    require "pry"; binding.pry
   end
 end
