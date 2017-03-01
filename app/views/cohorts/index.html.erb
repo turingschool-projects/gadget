@@ -1,0 +1,21 @@
+<div class="container">
+<%= form_tag(cohorts_verify_path, method: "post") do %>
+<div class="row cohort-group">
+  <div class="col s6">
+    <%= select_tag "cohorts", options_from_collection_for_select(@cohorts, "id", "name", "1"), class: "cohort-list", multiple: true %>
+  </div>
+  <div class="col s6">
+    <%= select_tag "criteria", options_for_select([ "Github Linked", "Github Photo", "Github Name Matches", "LinkedIn Linked", "LinkedIn Photo", "LinkedIn Name Matches"], "MasterCard"), class: "cohort-list", multiple: true %>
+  </div>
+    <center><%= submit_tag 'Verify', class: "btn" %></center>
+  </div>
+<% end %>
+</div>
+
+<script type="text/javascript">
+$('option').mousedown(function(e) {
+ e.preventDefault();
+ $(this).prop('selected', $(this).prop('selected') ? false : true);
+ return false;
+});
+</script>

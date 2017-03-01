@@ -1,0 +1,69 @@
+<div class="container verify">
+
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Cohort</th>
+      <th>Name</th>
+      <th class="github-account info">Github Account</th>
+      <th class="github-name info">Github Name Matches</th>
+      <th class="github-picture info">Github Picture</th>
+      <th class="linkedin-account info">Linkedn Account</th>
+      <!-- <th class="linkedin-name info">Linkedn name</th>
+      <th class="linkedin-picture info">Linkedn picture</th> -->
+    <tr>
+  <tbody>
+    <% @array.flatten.each do |student| %>
+    <tr>
+      <td> <%= student.cohort %> </td>
+      <td> <%= student.name %> </td>
+      <td class="github-account info"> <%= student.github_exists? %> </td>
+      <td class="github-name info"> <%= student.github_name_matches? %> </td>
+      <td class="github-picture info"> <%= student.github_picture_exists? %> </td>
+      <td class="linkedin-account info"> <%= student.linkedin_exists? %> </td>
+      <!-- <td class="linkedin-name info"> <%#= student.linkedin_name_matches? %> </td> -->
+      <!-- <td class="linkedin-picture info"> <%#= student.linkedin_picture_exists? %> </td> -->
+    </tr>
+    <% end %>
+  </tbody>
+  </thead>
+</table>
+</div>
+
+<script>
+  $(document).ready(function(){
+    var criteria = <%= @criteria.inspect.html_safe %>;
+    $('.info').hide();
+
+    for (var i = 0; i < criteria.length; i++) {
+      if(criteria[i] == "Github Linked"){
+        $('.github-account').show();
+      }
+      if(criteria[i] == "Github Photo"){
+        $('.github-picture').show();
+      }
+      if(criteria[i] == "Github Name Matches"){
+        $('.github-name').show();
+      }
+      if(criteria[i] == "LinkedIn Linked"){
+        $('.linkedin-account').show();
+      }
+      if(criteria[i] == "LinkedIn Photo"){
+        $('.linkedin-picture').show();
+      }
+      if(criteria[i] == "LinkedIn Name Matches"){
+        $('.linkedin-name').show();
+      }
+    }
+  })
+
+
+  tableRows = $('tbody td');
+  for (var i = 0; i < tableRows.length; i++) {
+    if(tableRows[i].innerText == "true"){
+      tableRows[i].innerHTML = "<i class='fa fa-check' aria-hidden='true'></i>"
+    } else if(tableRows[i].innerText == "false"){
+      tableRows[i].innerHTML = "<i class='fa fa-times' aria-hidden='true'></i>"
+    }
+  }
+</script>
