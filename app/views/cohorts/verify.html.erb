@@ -1,3 +1,5 @@
+<div class="container verify">
+
 <table class="striped">
   <thead>
     <tr>
@@ -26,6 +28,7 @@
   </tbody>
   </thead>
 </table>
+</div>
 
 <script>
   $(document).ready(function(){
@@ -53,4 +56,14 @@
       }
     }
   })
+
+
+  tableRows = $('tbody td');
+  for (var i = 0; i < tableRows.length; i++) {
+    if(tableRows[i].innerText == "true"){
+      tableRows[i].innerHTML = "<i class='fa fa-check' aria-hidden='true'></i>"
+    } else if(tableRows[i].innerText == "false"){
+      tableRows[i].innerHTML = "<i class='fa fa-times' aria-hidden='true'></i>"
+    }
+  }
 </script>

@@ -40,3 +40,15 @@
 .btn {
   margin-top: 10px;
 }
+
+.verify {
+  width: 95% !important;
+}
+
+.fa-check {
+  color: #38EA38;
+}
+
+.fa-times {
+  color: red;
+}
