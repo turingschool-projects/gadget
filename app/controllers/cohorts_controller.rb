@@ -20,6 +20,6 @@ class CohortsController < ApplicationController
     @results.flatten.each do |student|
       @array << Student.cohort_list(student.github, student)
     end
-    @array.sort_by!{|student| [student.cohort, student.last_name]}
+    @array.sort_by!{|student| [student.cohort, student.last_name.downcase]}
   end
 end

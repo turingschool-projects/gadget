@@ -17,10 +17,18 @@
     <tr>
       <td> <%= student.cohort %> </td>
       <td> <%= student.name %> </td>
-      <td class="github-account info"> <%= student.github_exists? %> </td>
+      <td class="github-account info">
+        <% if student.github_exists? %>
+          <%= link_to student.github, "http://github.com/#{student.github}" %>
+        <% end %>
+      </td>
       <td class="github-name info"> <%= student.github_name_matches? %> </td>
       <td class="github-picture info"> <%= student.github_picture_exists? %> </td>
-      <td class="linkedin-account info"> <%= student.linkedin_exists? %> </td>
+      <td class="linkedin-account info">
+        <% if student.linkedin_exists? %>
+          <%= link_to student.linkedin, "http://linkedin.com/in/#{student.linkedin}" %>
+        <% end %>
+      </td>
       <!-- <td class="linkedin-name info"> <%#= student.linkedin_name_matches? %> </td> -->
       <!-- <td class="linkedin-picture info"> <%#= student.linkedin_picture_exists? %> </td> -->
     </tr>
