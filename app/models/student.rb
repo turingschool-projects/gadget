@@ -1,17 +1,22 @@
 class Student
-  attr_reader :github_name, :github_picture, :github, :linkedin, :name, :cohort, :linkedin_name, :linkedin_picture
+  attr_reader :github_name, :github_picture, :github, :linkedin,
+              :first_name, :last_name, :cohort, :linkedin_name, :linkedin_picture
 
   def initialize(service_info={}, student=nil, linkedin={})
     @github_name      = service_info[:name]
     @github_picture   = service_info[:avatar_url]
     @github           = student.github
     @linkedin         = student.linkedin
-    @name             = "#{student.first_name} #{student.last_name}"
+    @first_name       = student.first_name
+    @last_name        = student.last_name
     @cohort           = student.cohort
     # @linkedin_name    = "#{linkedin.first_name} #{linkedin.last_name}" if linkedin != "" && linkedin != nil
     # @linkedin_picture = linkedin.picture if linkedin != "" && linkedin != nil
   end
 
+  def name
+    "#{first_name} #{last_name}"
+  end
 
   def self.cohort_list(username, student)
     # Student.new(GithubService.github(username), student, LinkedinService.scrape(student.linkedin))

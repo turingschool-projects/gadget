@@ -32,7 +32,7 @@ gem 'figaro'
 gem 'thin'
 gem 'omniauth-oauth2'
 gem 'pry'
-gem 'omniauth-census', git: "https://github.com/nzenitram/census_staging_oauth"
+gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'faraday'
 
 group :test do
